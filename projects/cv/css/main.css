@@ -1,0 +1,52 @@
+body {
+    
+}
+
+header {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+wrapper {
+
+}
+
+.box {
+    /* border-style: dashed; */
+    border: 2px dashed;
+    width: 50%;
+    margin: auto;
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+#border1 {
+    width: 150px;
+}
+
+.borderText {
+    margin-top: -15px;
+    margin-left: 30px;
+    background: white;
+    font-size: 20px;
+    width: 100px;
+    text-align: center;
+}
+
+.text1, .experience, .skillBox {
+    margin: 20px;
+}
+
+.expLeft {
+    display: inline;
+}
+
+.expRight {
+    display: inline;
+}
+
+.skill {
+    
+}
