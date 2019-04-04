@@ -3,10 +3,20 @@ body {
 }
 
 header, main {
-    width: 700px;
+    width: 800px;
     margin: auto;
-    text-align: center;
     margin-bottom: 50px;
+    display: grid;
+}
+
+header {
+    grid-template: 1fr / 1fr 250px 1fr;
+    margin-bottom: 100px;
+}
+
+header div {
+    grid-column: 2/ span 1; 
+    text-align: center
 }
 
 h1 {
@@ -23,11 +33,23 @@ h1, h3 {
     margin: 10px;
 }
 
+main {
+    grid-template: 1fr 1fr 1fr / 1fr;
+    grid-row-gap: 50px;
+}
+
 section {
+    transition: 0.5s;
     border: 2px dashed black;
     margin: auto;
     text-align: left;
-    margin-top: 75px;
+    display: block;
+    width: 100%;
+}
+
+section:not(:hover) {
+    transition: 0.5s;
+    
 }
 
 .borderText {
@@ -52,10 +74,6 @@ section {
     padding: 0px 20px 20px;
 }
 
-.skillBox {
-    padding: 0px 20px;
-}
-
 .experience {
     overflow: auto;
     color: black;
@@ -72,12 +90,21 @@ section {
     font-weight: bold;
 }
 
+.skillBox {
+    padding: 0px 20px;
+    display: grid;
+    grid-template: 75px 75px / 20% 20% 20% 20%;
+    grid-column-gap: 7%;
+}
+
 .skill {
-    display: inline-block;
-    margin-right: 45px;
-    margin-bottom: 20px;
-    position: relative;
+    align-self: center;
+    justify-self: center;
     transition: transform 0.5s;
+}
+
+#skJS, #skMDB {
+    min-width: 110px;
 }
 
 img, .skillName {
@@ -91,19 +118,15 @@ img, .skillName {
                 background 0.5s;
 }
 
-section:nth-child(1) {
-    margin-top: 100px;
-}
-
-section:nth-child(1) .borderText {
+#sec1 .borderText {
     transition: transform 0.5s;
 } 
 
-section:nth-child(1) #halfBorder{
+#sec1 #halfBorder{
     transition: border 0.5s;
 }
 
-section:nth-child(1):hover {
+#sec1:hover {
     transition: 0.5s;
     border: 2px black; 
     border-style: groove dotted;
@@ -111,30 +134,30 @@ section:nth-child(1):hover {
     box-shadow: 1px 1px 10px;
 }
 
-section:nth-child(1):hover #halfBorder {
+#sec1:hover #halfBorder {
     border: 2px black;
     border-style: dotted dotted none;
 }
 
-section:nth-child(1):hover .borderText {
+#sec1:hover .borderText {
     transform: translate(230px, 0px);
     
 }
 
-section:nth-child(2) {
+#sec2 {
     transition: box-shadow 0.5s,
                 background 0.5s,
                 color 0.5s;
             
 }
 
-section:nth-child(2) .borderText {
+#sec2 .borderText {
     transition: border 0.5s;
     width: 160px;
     border: 2px dotted transparent;
 }
 
-section:nth-child(2):hover {
+#sec2:hover {
     background: rgb(17, 75, 95, 0.9);
     
     transition: 0.5s;
@@ -145,33 +168,33 @@ section:nth-child(2):hover {
                 0px -10px 0px white;
 }
 
-section:nth-child(2):hover .experience {
+#sec2:hover .experience {
     color: white;
 }
 
-section:nth-child(2):hover .borderText {
+#sec2:hover .borderText {
     color: black;
     border: 2px dotted black;
 }
 
-section:nth-child(3) {
+#sec3 {
     transition: box-shadow 0.5s,
                 transform 0.5s;
 }
 
-section:nth-child(3) .borderText {
+#sec3 .borderText {
     transition: box-shadow 0.5s,
                 transform 0.5s;
     animation: spin 1s;
     width: 60px;
 }
 
-section:nth-child(3):hover {
+#sec3:hover {
     box-shadow: 1px 1px 10px;
     transform: scale(1.1);
 }
 
-section:nth-child(3):hover .borderText {
+#sec3:hover .borderText {
     box-shadow: 6px -8px 10px -3px black,
                 -6px -8px 10px -3px black,
                 0px 3px 5px white;
@@ -186,8 +209,8 @@ section:nth-child(3):hover .borderText {
     padding: 5px;
     position: absolute;
     z-index: 5;
-    left: 125%;
-    top: 0px;
+    left: 120%;
+    top: -7px;
     border-radius: 5px;
     display: none;
     width: 150px;
@@ -219,5 +242,76 @@ section:nth-child(3):hover .borderText {
     background: #028090;
     color: white;
     border-radius: 5px;
+    border: 1px solid white;
 }
 
+@media only screen and (max-width: 800px) {
+
+
+    header, main {
+        width: 90%;
+    }
+
+    section {
+        font-size: 14px;
+    }
+
+    .borderText {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #sec1 {
+        text-align: center;
+    }
+
+    #sec1:hover .borderText {
+        transform: translateX(-50%);
+    }
+
+    .expRight {
+        text-align: center;
+    }
+
+    #sec3:hover .borderText {
+        transform: translateX(-50%) rotate(360deg);
+    }
+    
+}
+
+@media only screen and (max-width: 550px) {
+    .skillBox {
+        grid-template: 75px 75px 75px / 26% 26% 26%;
+        grid-column-gap: 11%;
+    }
+
+    .skill .tooltip {
+        top: 125%;
+        left: 5%;
+        font-size: 12px;
+        width: 100px;
+    }
+
+    .tooltip::after {
+        top: -9%;
+        left: 5%;
+        border-color: transparent transparent #028090 transparent;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .skillBox {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(7, 1fr);
+        grid-row-gap: 20px;
+        padding: 20px 0;
+    }    
+    .skill {
+        min-width: 0;
+    }
+
+    
+
+    
+
+}
